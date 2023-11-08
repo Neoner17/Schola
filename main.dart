@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/* import 'package:flutter/material.dart';
 
 
 void main() {
@@ -88,9 +88,14 @@ class MyWidget extends StatelessWidget{
                   child: Text(
                     text,
                     style: TextStyle(fontSize: 16.0),
+
                   ),
                 ),
-              ],
+
+
+
+          ],
+
             ),
           );
 
@@ -100,55 +105,159 @@ class MyWidget extends StatelessWidget{
   }
 
 }
-  /*
+  */
+import 'package:flutter/material.dart';
+import 'productDetails.dart';
+
+
+void main() {
+  runApp(MyApp());
+}
+
+final List<String> ImageUrls = [
+  'https://the-flow.ru/uploads/images/resize/830x0/adaptiveResize/09/01/16/50/27/5eb332e40cd7.jpg',
+  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0VnhUImL_q9i0KFbZYiPu9yY-EkulugZNeMTU65OXWwQiFaNK4C265eBXiZ8vWCwJkuo&usqp=CAU',
+  'https://go.zvuk.com/imgs/2023/06/22/12/5958955/769e64b0b60daa2a73293b684574386ff1b25055.jpg',
+  'https://i1.sndcdn.com/artworks-000634354693-5wtejg-t240x240.jpg',
+  'https://www.cnet.com/a/img/resize/a38a3d474373d6678be0305ff9f9a2c6a52609f0/hub/2018/09/11/4d928ca3-261f-415b-a20b-153d0c9dd155/kanye-i-love-it.png?auto=webp&fit=crop&height=675&width=1200',
+  'https://is1-ssl.mzstatic.com/image/thumb/AMCArtistImages126/v4/96/80/06/968006e8-c121-8156-0f09-39a615ae320e/a825eb07-97c9-44ee-9b6a-e599b6fca9b4_file_cropped.png/486x486bb.png',
+  'https://i1.sndcdn.com/avatars-8XQ60TP8veR9aVdl-QIc3Mw-t240x240.jpg',
+  'https://avatars.dzeninfra.ru/get-zen_doc/3958762/pub_60bf73aeeeb0cd267310d94e_60bf750f5bad2d210c985dc4/scale_1200',
+  'https://the-flow.ru/uploads/images/resize/830x0/adaptiveResize/10/28/76/41/57/e76dc6d40cd7.jpeg',
+  'https://www.rollingstone.com/wp-content/uploads/2018/06/rs-7539-20121017-keef-624-1350503449.jpg?w=624',
+  'https://i.scdn.co/image/ab6761610000e5ebb9fe56b027f502aa663095f4',
+  'https://the-flow.ru/uploads/images/resize/830x0/adaptiveResize/08/29/77/91/80/26f5c6040cd7.jpg',
+  'https://i1.sndcdn.com/avatars-000281750456-tvewmv-t500x500.jpg',
+  'https://i.scdn.co/image/ab6761610000e5eb1665b83dea3ccf7fd782db1b',
+  'https://upload.wikimedia.org/wikipedia/commons/3/36/THRILL_PILL_808_2.jpg',
+];
+
+final List<String> textContent = [
+  'MAYOT',
+  'SCALLY MILANO',
+  'HeronWater',
+  'semetary',
+  'Kanye West',
+  'NewLightChild',
+  'Yeat',
+  'Platina',
+  'Bushido Zho',
+  'Chief Keef',
+  '163ONMYNECK',
+  'AARNE',
+  'Kendrick lamar',
+  'KIZARU',
+  'THRILL PILL',
+];
+
+final List<double> ProductPriceList = [23231, 564, 5464, 1956, 3129,12391,95930,12395,123095,56929,123095,12094,21349,293213,2139123];
+
+
+
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.pink,
-          title: Text('tWO'),
+          title: Text('RapMarket'),
+          backgroundColor: Colors.blue,
         ),
-        body: MyWidget(),
+        backgroundColor: Colors.blue,
+        body: ProductGrid(),
       ),
     );
   }
 }
 
-class MyWidget extends StatelessWidget {
+
+class ProductGrid extends StatelessWidget {
   @override
-  Widgetbuild(BuildContext Context){
-    return Container(
-    color:  Colors.White,
-        child: ListView.builder(
-        itemCount: 1
-        itemBuilder: (context.index)
-    return Padding(padding: const)
+  Widget build(BuildContext context) {
+    return GridView.count(
+      crossAxisCount: 2,
+      mainAxisSpacing: 8.0,
+      crossAxisSpacing: 8.0,
+      children: List.generate(ImageUrls.length, (index) {
+        return ProductCard(
+          imageUrl: ImageUrls[index],
+          productName: textContent[index],
+          ProductPrice: ProductPriceList[index],
+        );
+      }),
+    );
   }
 }
-*/
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-  /*
-    color: Colors.white,
-  child: Image.network ("https://cdn.citilink.ru/ri57cPg9uDJxMDjcJlQ06SY5p7pVoN5VHzkiadiXJK0/resizing_type:fit/gravity:sm/width:400/height:400/plain/items/1976600_v01_b.jpg"),
-    width: 100,
-    height: 100,
-    : AppBar (
-  const Text("Мини ПК CHUWI HeroBox"),
-  ),
-),
-);
+
+
+class ProductCard extends StatelessWidget {
+  final String imageUrl;
+  final String productName;
+  final double ProductPrice;
+
+  ProductCard({required this.imageUrl, required this.productName, required this.ProductPrice});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Padding(
+        padding: EdgeInsets.all(8.0),
+        child: Column(
+          children:[
+            Image.network(
+              imageUrl,
+              width: 75,
+              height: 75,
+            ),
+            Text('\$${ProductPrice.toStringAsFixed(2)}',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            Text(productName),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => ProductDetailsPage(
+                      ImageContent: imageUrl,
+                      TextContent: productName,
+                    ),
+                  ),
+                );
+              },
+              child: Text('Купить'),
+            )
+          ],
+        ),
+      ),
+    );
+  }
 }
-*/
+
+
+// class ProductDetailsPage extends StatelessWidget{
+//   final String ImageContent;
+//   final String TextContent;
+//
+//   ProductDetailsPage({required this.ImageContent, required this.TextContent});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text(TextContent),
+//       ),
+//       body: Column(
+//         children: [
+//           Image.network(ImageContent),
+//           Text(TextContent),
+//         ],
+//       ),
+//     );
+//   }
+// }
+    
+    
+    
+    
+    
+
