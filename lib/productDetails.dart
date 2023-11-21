@@ -1,0 +1,125 @@
+import 'package:flutter/material.dart';
+import 'main.dart';
+
+
+void main() {
+  runApp(MyApp());
+}
+
+final List<String> ImageUrls = [
+  'https://the-flow.ru/uploads/images/resize/830x0/adaptiveResize/09/01/16/50/27/5eb332e40cd7.jpg',
+  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0VnhUImL_q9i0KFbZYiPu9yY-EkulugZNeMTU65OXWwQiFaNK4C265eBXiZ8vWCwJkuo&usqp=CAU',
+  'https://go.zvuk.com/imgs/2023/06/22/12/5958955/769e64b0b60daa2a73293b684574386ff1b25055.jpg',
+  'https://i1.sndcdn.com/artworks-000634354693-5wtejg-t240x240.jpg',
+  'https://www.cnet.com/a/img/resize/a38a3d474373d6678be0305ff9f9a2c6a52609f0/hub/2018/09/11/4d928ca3-261f-415b-a20b-153d0c9dd155/kanye-i-love-it.png?auto=webp&fit=crop&height=675&width=1200',
+  'https://is1-ssl.mzstatic.com/image/thumb/AMCArtistImages126/v4/96/80/06/968006e8-c121-8156-0f09-39a615ae320e/a825eb07-97c9-44ee-9b6a-e599b6fca9b4_file_cropped.png/486x486bb.png',
+  'https://i1.sndcdn.com/avatars-8XQ60TP8veR9aVdl-QIc3Mw-t240x240.jpg',
+  'https://avatars.dzeninfra.ru/get-zen_doc/3958762/pub_60bf73aeeeb0cd267310d94e_60bf750f5bad2d210c985dc4/scale_1200',
+  'https://the-flow.ru/uploads/images/resize/830x0/adaptiveResize/10/28/76/41/57/e76dc6d40cd7.jpeg',
+  'https://www.rollingstone.com/wp-content/uploads/2018/06/rs-7539-20121017-keef-624-1350503449.jpg?w=624',
+  'https://i.scdn.co/image/ab6761610000e5ebb9fe56b027f502aa663095f4',
+  'https://the-flow.ru/uploads/images/resize/830x0/adaptiveResize/08/29/77/91/80/26f5c6040cd7.jpg',
+  'https://i1.sndcdn.com/avatars-000281750456-tvewmv-t500x500.jpg',
+  'https://i.scdn.co/image/ab6761610000e5eb1665b83dea3ccf7fd782db1b',
+  'https://upload.wikimedia.org/wikipedia/commons/3/36/THRILL_PILL_808_2.jpg',
+];
+
+final List<String> textContent = [
+  'MAYOT',
+  'SCALLY MILANO',
+  'HeronWater',
+  'semetary',
+  'Kanye West',
+  'NewLightChild',
+  'Yeat',
+  'Platina',
+  'Bushido Zho',
+  'Chief Keef',
+  '163ONMYNECK',
+  'AARNE',
+  'Kendrick lamar',
+  'KIZARU',
+  'THRILL PILL',
+];
+
+final List<double> ProductPriceList = [23231, 564, 5464, 1956, 3129,12391,95930,12395,123095,56929,123095,12094,21349,293213,2139123];
+
+
+
+final List<String> productDescription = [
+'1ы1тил1лучш1.',
+'1.',
+'3.',
+'2',
+'iluiluiluiluil.',
+'kuikuiluiluiluiluilrt.',
+'ytjyujtyjytj.',
+'1',
+'4нehrteht4.',
+'7i67i67i',
+'Сtghrth',
+'rthtrheh',
+  'ууцйкуцкцук',
+  'уцвацуацуацу',
+  'уакуаукп',
+];
+
+
+class ProductDetailsPage extends StatelessWidget {
+  final String ImageContent;
+  final String TextContent;
+  final String productDescription;
+
+  ProductDetailsPage(
+      {required this.ImageContent, required this.TextContent, required this.productDescription});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(TextContent),
+        backgroundColor: Colors.blue,
+      ),
+      body: SingleChildScrollView(
+        padding: EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              height: 300,
+              width: double.infinity,
+              child: Image.network(
+                ImageContent,
+                fit: BoxFit.cover,
+              ),
+            ),
+            SizedBox(height: 20),
+            Text(
+              TextContent,
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 10),
+            Text(
+              productDescription,
+              style: TextStyle(fontSize: 16),
+            ),
+            SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                ElevatedButton(onPressed: () {}, child: Text('Like')
+                ),
+                ElevatedButton(onPressed: () {}, child: Text('Cart')
+                ),
+                ElevatedButton(onPressed: () {}, child: Text('Buy in one click')
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
